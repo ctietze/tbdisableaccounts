@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>tbdisableaccounts@iltisworld.de</em:id>
+    <em:type>2</em:type>
+    <em:name>Disable accounts</em:name>
+    <em:version>0.1</em:version>
+    <em:creator>Clemens Tietze</em:creator>
+    <em:contributor></em:contributor>
+    <em:description>Enable or disable accounts manually</em:description>
+    <em:aboutURL>chrome://tbdisableaccounts/content/about.xul</em:aboutURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>3.0b3</em:minVersion>
+        <em:maxVersion>3.1.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Disable accounts</em:name>
+        <em:description>Eine Erweiterung, die es ermöglicht, Accounts in Thunderbird manuell zu aktivieren/deaktiveren.</em:description>
+        <em:creator>Clemens Tietze</em:creator>
+        <em:translator>Archaeopteryx</em:translator>
+        <em:homepageURL>http://wiki.github.com/ctietze/Disable-Accounts/</em:homepageURL>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

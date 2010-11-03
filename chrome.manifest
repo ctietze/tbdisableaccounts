@@ -1,0 +1,7 @@
+content   tbdisableaccounts                 chrome/content/
+skin      tbdisableaccounts   classic/1.0   chrome/skin/
+locale    tbdisableaccounts   en-US         chrome/locale/en-US/
+resource  tbdisableaccounts                 modules/
+
+style chrome://global/content/customizeToolbar.xul chrome://tbdisableaccounts/skin/browserOverlay.css
+overlay chrome://messenger/content/messenger.xul chrome://tbdisableaccounts/content/message-overlay.xul

@@ -1,0 +1,7 @@
+<!ENTITY tbda.title "Deactivate / activate accounts">
+<!ENTITY tbda.noaccountsetupyet "No accounts found.">
+<!ENTITY tbda.status.label "Disable">
+<!ENTITY tbda.accountDescription "List of all accounts. Uncheck the accounts you want to disable and press Save">
+<!ENTITY tbda.button.save "Save and restart">
+<!ENTITY tbda.button.cancel "Cancel">
+<!ENTITY tbda.tabs.default "Default">
