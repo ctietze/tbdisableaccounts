@@ -5,8 +5,8 @@
 
 <!DOCTYPE window SYSTEM "chrome://tbdisableaccounts/locale/tbda.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-    title="&tbda.title;" onload="TbDisableAccounts.AccountManager.buildAccountList(this)">
-    <script type="application/x-javascript" src="tbdisableaccounts.js" />
+    title="&tbda.title;" onload="TbDisableAccounts.Account.Controller.init(this)">
+    <script type="application/x-javascript" src="tbdisableaccounts-viewhelper.js" />
 
     <description style="font-weight: bold; color: #c00; display: none;" 
         id="err_no_accounts">&tbda.noaccountsetupyet;</description>
@@ -27,7 +27,7 @@
             <button flex="1" label="&tbda.button.cancel;" 
                 oncommand="javascript:window.close()" />
             <button flex="1" label="&tbda.button.save;" 
-                oncommand="TbDisableAccounts.AccountManager.saveAccounts(window)"/>
+                oncommand="TbDisableAccounts.Account.Controller.saveAccounts(window)"/>
         </hbox>
     </groupbox>
     

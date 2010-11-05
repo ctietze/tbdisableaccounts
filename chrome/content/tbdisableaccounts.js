@@ -1,5 +1,6 @@
 Components.utils.import("resource://tbdisableaccounts/common.js");
-Components.utils.import("resource://tbdisableaccounts/accountManager.js");
+Components.utils.import("resource://tbdisableaccounts/controller/account-controller.js");
+Components.utils.import("resource://tbdisableaccounts/view/account-view.js");
 
 const tbda_prefs = Application.extensions.get("tbdisableaccounts@iltisworld.de").prefs;
 /**
@@ -11,17 +12,19 @@ if ("undefined" == typeof(TbDisableAccounts)) {
 };
 
 /**
- * Controls the browser overlay for the Hello World extension.
+ * TbDisableAccounts extension main entry point 
  */
 TbDisableAccounts.Main = {
     tbWindow : null,
     app : null,
 
     init : function() {
-        this.app = Application;
+        TbDisableAccounts.Account.Controller.load();
 
-        TbDisableAccounts.AccountManager.load(this.app);
-        this.tbWindow = window.openDialog('chrome://tbdisableaccounts/content/', 
+    },
+
+    run : function() {
+        window.openDialog('chrome://tbdisableaccounts/content/', 
             '', 'chrome=yes, modal=yes, dialog=no, resizable=yes');
     },
 

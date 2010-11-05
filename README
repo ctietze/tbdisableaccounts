@@ -1,5 +1,24 @@
 == Disable account is a thunderbird extension to manually activate and deactivate mail accounts 
 
+== Build extension file and installation
+
+=== Linux
+
+=== Build install package
+zip -r tbdisableaccounts@iltisworld.de.xpi *
+
+=== Thunderbird installation
+Open "Menu" -> "Extras" -> "Add-ons" -> "Install"
+Select xpi file, install the extension and restart thunderbird
+
+=== Manually installation
+switch to your thunderbird extension folder
+e.g. /home/[USERNAME]/.thunderbird/[PROFIL_NAME]/extensions
+create folder "tbdisableaccounts@iltisworld.de" and copy all extension files into 
+the new folder
+start thunderbird 
+Open "Extras" -> "Add-ons" and activate the extension
+
 = License
 Dual licensed under the MIT and GPL licenses:
 http://www.opensource.org/licenses/mit-license.php

@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <!DOCTYPE overlay SYSTEM "chrome://tbdisableaccounts/locale/tbda.dtd">
 <overlay id="tbda-overlay" 
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="TbDisableAccounts.Main.init();">
     <script type="application/x-javascript" src="tbdisableaccounts.js" />
     <statusbar id="status-bar">
         <statusbarpanel id="tbda-panel" label="&tbda.status.label;" 
-            onclick="TbDisableAccounts.Main.init();"/>
+            onclick="TbDisableAccounts.Main.run();"/>
     </statusbar> 
 </overlay>

@@ -5,37 +5,31 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 Components.utils.import("resource://tbdisableaccounts/common.js");
-Components.utils.import("resource://tbdisableaccounts/account.js");
+Components.utils.import("resource://tbdisableaccounts/model/account-model.js");
+Components.utils.import("resource://tbdisableaccounts/view/account-view.js");
 
-/**
- * A very simple counter.
- */
-TbDisableAccounts.AccountManager = 
+TbDisableAccounts.Account.Controller = 
 {
-    /* Current accounts count.  */
     _accounts : new Array(),
     _accountsAll : new Array(),
-    _app : null,
-    _window   : null,
-    /**
-     * Returns the current message count.
-     * @return the current message count.
-    */
+    _view   : null,
+	
+	init: function (window)
+	{
+       	this._view   = TbDisableAccounts.Account.View;
+		this._view.setWindow(window);
+        this.load();
+		this._buildAccountList();
+		
+	},
+
     get accounts() { return this._accounts; },
 
-    /**
-     * load exisiting accounts
-     */
-
-    load : function(app) 
+    load : function() 
     {
-        this.app = app;
-
-        this.log(">>>load [" + this._accounts.length + "]");
-        if (this._accounts.length == 0) {
-            this._queryAllAccounts();
-            this._queryActiveAccounts();
-        }
+        this.log(">>>load");
+        this._queryAllAccounts();
+        this._queryActiveAccounts();
     },
 
     _queryAllAccounts : function()
@@ -85,11 +79,10 @@ TbDisableAccounts.AccountManager =
         }
     },
 
-    buildAccountList: function(actWindow) 
+    _buildAccountList: function() 
     {
-        this.log(">>>_buildAccountList [" + actWindow + "]");
-        this._window = actWindow;
-        var accList  = this.getList();
+        this.log(">>>_buildAccountList [" + this._accountsAll + "]");
+    	var accList  = this._view.getList();
 
         for(var key in this._accountsAll) {
             var value   = this._accountsAll[key];
@@ -105,86 +98,40 @@ TbDisableAccounts.AccountManager =
                 checked = true;
             }
             var label = name + ' (' + key + ')';
-            var item  = this._setItem(id, name, key, label, checked);
-            this._setListItem(this._window, accList, item);
+            var item  =  this._view.setItem(id, name, key, label, checked);
+            this._view.setListItem(accList, item);
         }
     },
 
-    _setItem: function (id, name, value, label, checked)
+    saveAccounts: function() 
     {
-        var item = new Array();
-        item['id']      = id;
-        item['name']    = name;
-        item['value']   = value;
-        item['label']   = label;
-        item['checked'] = checked;
-        return item;
-    },
-
-    _setListItem: function(window, list, item) 
-    {
-        let it   = window.document.createElement("listitem");
-        it.setAttribute("label", item['label']);
-        it.setAttribute("type", "checkbox");
-        it.setAttribute("value", item['value']);
-        it.setAttribute("checked", item['checked']);
-        list.appendChild(it);
-    },
-
-    saveAccounts: function(actWindow) 
-    {
-        this._window = actWindow;
-        var accList  = this.getList();
-        var accounts = this.getCheckedItems(accList);
+        //this._window = actWindow;
+        var accList  = this._view.getList();
+        var accounts = this._view.getCheckedItems(accList);
         
         try{
             var prefs = Cc["@mozilla.org/preferences-service;1"]
                 .getService(Ci.nsIPrefService);
             prefs.getBranch("mail.accountmanager.").setCharPref("accounts", accounts);
             
-            this.restart(this._window);
+            this.restart();
         }
         catch(err) {
             // TODO set Error message
         }
     },
 
-    restart: function (window) {
+    restart: function () {
         let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
         .getService(Ci.nsIWindowMediator)
         .getMostRecentWindow("mail:3pane");
         mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
-        window.close();
-    },
-
-    getList: function() 
-    {
-        var doc  = this._window.document;
-        var list = doc.getElementById("tbdisableaccounts-accountlist");
-        return  list;
-    },
-
-    getCheckedItems: function(itemList) 
-    {
-        var items = "";
-        if (typeof(itemList) != undefined) {
-            var childs     = itemList.childNodes;
-            var arrChecked = new Array();
-            for (var i = 0; i < childs.length; i++) {
-                if (childs[i].checked) {
-                    arrChecked.push(childs[i].value);
-                }
-            }
-                        
-            items = arrChecked.join(",");
-        }
-        this.log("<<getCheckedItems [items: " + items + "]");
-        return items;
+        this._view.close();
     },
 
     log: function (aMsg)
     {
-        let msg = "AccountManager.js: " + (aMsg.join ? aMsg.join("") : aMsg);
+        let msg = "account-controller.js: " + (aMsg.join ? aMsg.join("") : aMsg);
         Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).
             logStringMessage(msg);
         dump(msg + "\n");
