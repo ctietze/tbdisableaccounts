@@ -2,10 +2,10 @@
 
 == Build extension file and installation
 
-=== Linux
-
+=== Linux 
 === Build install package
-zip -r tbdisableaccounts@iltisworld.de.xpi *
+Zip all files (without the root folder)
+e.g. zip -r tbdisableaccounts@iltisworld.de.xpi *
 
 === Thunderbird installation
 Open "Menu" -> "Extras" -> "Add-ons" -> "Install"
@@ -18,6 +18,14 @@ create folder "tbdisableaccounts@iltisworld.de" and copy all extension files int
 the new folder
 start thunderbird 
 Open "Extras" -> "Add-ons" and activate the extension
+
+== Windows
+=== Build install package
+Zip all files (without the root folder) and rename the archive to tbdisableaccounts@iltisworld.de.xpi
+
+=== Thunderbird installation
+Open "Menu" -> "Extras" -> "Add-ons" -> "Install"
+Select xpi file, install the extension and restart thunderbird
 
 = License
 Dual licensed under the MIT and GPL licenses:
