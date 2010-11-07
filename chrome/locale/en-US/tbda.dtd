@@ -2,6 +2,6 @@
 <!ENTITY tbda.noaccountsetupyet "No accounts found.">
 <!ENTITY tbda.status.label "Disable">
 <!ENTITY tbda.accountDescription "List of all accounts. Uncheck the accounts you want to disable and press Save">
-<!ENTITY tbda.button.save "Save and restart">
-<!ENTITY tbda.button.cancel "Cancel">
+<!ENTITY tbda.button.save "Save and restart Thunderbird">
+<!ENTITY tbda.button.cancel "Cancel and close">
 <!ENTITY tbda.tabs.default "Default">

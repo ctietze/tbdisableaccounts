@@ -5,15 +5,17 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 
 Components.utils.import("resource://tbdisableaccounts/common.js");
+Components.utils.import("resource://tbdisableaccounts/lib/iprods/log/log-utils.js");
 
 TbDisableAccounts.Account.View = 
 {
+    _filename : "account-view.js",
     _window   : null,
-	
-	setWindow : function (window)
-	{
-		this._window = window;
-	},
+
+    setWindow : function (window)
+    {
+        this._window = window;
+    },
 
     close: function () {
         this._window.close();
@@ -21,7 +23,7 @@ TbDisableAccounts.Account.View =
 
     getList: function() 
     {
-        this.log(">>>getList" +  this._window);
+        Iprods_Log_Utils.log(this._filename, ">>>getList" +  this._window);
         var doc  = this._window.document;
         var list = doc.getElementById("tbdisableaccounts-accountlist");
         return list;
@@ -41,14 +43,13 @@ TbDisableAccounts.Account.View =
                         
             items = arrChecked.join(",");
         }
-        this.log("<<getCheckedItems [items: " + items + "]");
+        Iprods_Log_Utils.log(this._filename, "<<getCheckedItems [items: " + items + "]");
         return items;
     },
 
-    setItem: function (id, name, value, label, checked)
+    setItem: function (name, value, label, checked)
     {
         var item = new Array();
-        item['id']      = id;
         item['name']    = name;
         item['value']   = value;
         item['label']   = label;
@@ -58,21 +59,11 @@ TbDisableAccounts.Account.View =
 
     setListItem: function(list, item) 
     {
-        this.log(">>>setListItem" +  this._window);
         let it   = this._window.document.createElement("listitem");
         it.setAttribute("label", item['label']);
         it.setAttribute("type", "checkbox");
         it.setAttribute("value", item['value']);
         it.setAttribute("checked", item['checked']);
         list.appendChild(it);
-    },
-
-    log: function (aMsg)
-    {
-        let msg = "account-view.js: " + (aMsg.join ? aMsg.join("") : aMsg);
-        Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).
-            logStringMessage(msg);
-        dump(msg + "\n");
-     }
-
+    }
 };

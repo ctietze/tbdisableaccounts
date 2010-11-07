@@ -1,4 +1,4 @@
-var EXPORTED_SYMBOLS = [ "TbDisableAccounts" ];
+var EXPORTED_SYMBOLS = [ "TbDisableAccounts"];
 
 const Cc = Components.classes;
 const Ci = Components.interfaces;
