@@ -1,34 +1,39 @@
-<?xml version="1.0"?>
-<?xml-stylesheet href="chrome://global/skin/global.css"  type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/msgSelectOffline.css" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/checkbox.css" type="text/css"?>
+<?xml-stylesheet href="chrome://tbdisableaccounts/skin/tbda.css" type="text/css"?>
 
 <!DOCTYPE window SYSTEM "chrome://tbdisableaccounts/locale/tbda.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     title="&tbda.title;" onload="TbDisableAccounts.Account.Controller.init(this)">
+    <script src="chrome://global/content/strres.js"/>
     <script type="application/x-javascript" src="tbdisableaccounts-viewhelper.js" />
+    <stringbundle id="tbda-msg" src="chrome://tbdisableaccounts/locale/tbda.properties"/>
 
-    <description style="font-weight: bold; color: #c00; display: none;" 
-        id="err_no_accounts">&tbda.noaccountsetupyet;</description>
     <groupbox>
-        <caption label="&tbda.accountDescription;" />
         <tabbox flex="1">
             <tabs >
                <tab label="&tbda.tabs.default;"/>
             </tabs>
             <tabpanels flex="1" >
-                <listbox rows="10" id="tbdisableaccounts-accountlist">
-                </listbox>
-             </tabpanels>
+                <vbox>
+                    <caption label="&tbda.accountDescription;" />
+                    <checkbox label="&tbda.checkbox.sorting;" id="tbda-sorting"
+                        oncommand="TbDisableAccounts.Account.Controller.toggleSorting()" />
+                    <listbox rows="10" id="tbda-accountlist" />
+                </vbox>
+            </tabpanels>
         </tabbox>
     </groupbox>
      <groupbox>
-        <hbox>
-            <button flex="1" label="&tbda.button.cancel;" 
-                oncommand="javascript:window.close()" />
-            <button flex="1" label="&tbda.button.save;" 
-                oncommand="TbDisableAccounts.Account.Controller.saveAccounts(window)"/>
-        </hbox>
+        <vbox>
+            <description id="tbda-error-msg" class="tbda-off"/>
+            <hbox>
+                <button flex="1" label="&tbda.button.cancel;" 
+                    oncommand="javascript:window.close()" />
+                <button flex="1" label="&tbda.button.save;" 
+                    oncommand="TbDisableAccounts.Account.Controller.saveAccounts()"/>
+            </hbox>
+        </vbox>
     </groupbox>
-    
 </window>

@@ -2,18 +2,20 @@ var EXPORTED_SYMBOLS = [];
 
 Components.utils.import("resource://tbdisableaccounts/common.js");
 
-TbDisableAccounts.Account = function(akey, aName, aStatus) 
+TbDisableAccounts.Account = function(key, name, isActive, isHidden) 
 {
-    this._key = akey;
-    this._name = aName;
-    this._status = aStatus;
+    this._key = key;
+    this._name = name;
+    this._isActive = isActive;
+    this._isHidden = isHidden;
 };
 
 TbDisableAccounts.Account.prototype = 
 {
     _key : null,
     _name : null,
-    _status : null,
+    _isActive : null,
+    _isHidden : null,
 
     get key() 
     {
@@ -25,14 +27,20 @@ TbDisableAccounts.Account.prototype =
         return this._name;
     },
 
-    get status() 
+    get active() 
     {
-        return this._status;
+        return this._isActive;
     },
-    
+
+    get hidden() 
+    {
+        return this._isHidden;
+    },
+
     toString: function()
     {
-        return "TbDisableAccounts.Account [key: " + this._key + ", name: " 
-            + this._key + ", status: " + this._status + "]";
+        return "TbDisableAccounts.Account [key: " + this._key 
+            + ", name: " + this._name + ", status: " + this._isActive 
+            + ", _isHidden: " + this._isHidden + "]";
     }
 };

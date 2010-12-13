@@ -1,0 +1,17 @@
+/* tbdisableaccounts styles */
+
+#tbda-error-msg { font-weight: bold; color: #c00; }
+#tbda-error-msg .tbda-on { display: block;}
+
+
+listitem [disabled="true"] {
+    color: #000000;
+}
+listitem .tbda-hidden {
+    display: none;
+}
+
+
+listitem:HOVER {
+    cursor: pointer;
+}

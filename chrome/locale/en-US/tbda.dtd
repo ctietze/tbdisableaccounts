@@ -5,3 +5,4 @@
 <!ENTITY tbda.button.save "Save and restart Thunderbird">
 <!ENTITY tbda.button.cancel "Cancel and close">
 <!ENTITY tbda.tabs.default "Default">
+<!ENTITY tbda.checkbox.sorting "Activate drag&amp;drop sorting">

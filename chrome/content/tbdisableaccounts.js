@@ -2,7 +2,7 @@ Components.utils.import("resource://tbdisableaccounts/common.js");
 Components.utils.import("resource://tbdisableaccounts/controller/account-controller.js");
 Components.utils.import("resource://tbdisableaccounts/view/account-view.js");
 
-const tbda_prefs = Application.extensions.get("tbdisableaccounts@iltisworld.de").prefs;
+//const tbda_prefs = Application.extensions.get("tbdisableaccounts@iltisworld.de").prefs;
 /**
  * TbDisableAccounts namespace.
  */
@@ -25,7 +25,7 @@ TbDisableAccounts.Main = {
 
     run : function() {
         window.openDialog('chrome://tbdisableaccounts/content/', 
-            '', 'chrome=yes, modal=yes, dialog=no, resizable=yes');
+            '', 'chrome=yes, modal=yes, dialog=no, resizable=yes, centerscreen=yes');
     },
 
     log: function (aMsg)
