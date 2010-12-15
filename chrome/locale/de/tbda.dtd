@@ -1,7 +1,7 @@
 <!ENTITY tbda.title "Deaktiviere / aktiviere Konto">
 <!ENTITY tbda.noaccountsetupyet "Kein Konto gefunden.">
 <!ENTITY tbda.status.label "Deaktivieren">
-<!ENTITY tbda.accountDescription "Liste aller Konton. Entfernen Sie den Haken bei den Konton die Sie deaktivieren wollen">
+<!ENTITY tbda.accountDescription "Liste aller Konten. Entfernen Sie den Haken bei den Konten die Sie deaktivieren wollen">
 <!ENTITY tbda.button.save "Speichern und neu starten">
 <!ENTITY tbda.button.cancel "Abbrechen und schließen">
 <!ENTITY tbda.tabs.default "Default">
